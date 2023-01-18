@@ -1,5 +1,6 @@
 package com.example.education
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.appcompat.app.AppCompatActivity
@@ -67,6 +68,7 @@ class Aftersignup : AppCompatActivity() {
         }
 
     }
+    @SuppressLint("SuspiciousIndentation")
     fun checkdetails()
     {
         var name = binding.Name.text.toString()
