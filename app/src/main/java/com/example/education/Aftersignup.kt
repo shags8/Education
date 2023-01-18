@@ -10,10 +10,14 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.education.databinding.ActivityAftersignupBinding
 import com.google.android.material.navigationrail.NavigationRailMenuView
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 class Aftersignup : AppCompatActivity() {
 
     private lateinit var binding : ActivityAftersignupBinding
+    private lateinit var database : DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +25,6 @@ class Aftersignup : AppCompatActivity() {
         binding = ActivityAftersignupBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        var name = binding.Name.text
-        var Username = binding.UserName.text
-        var PhNo = binding.PhNo.text
-        var Otp = binding.Otp.text
-        var Age = binding.Age.text
         setupSpinner()
         binding.button.isEnabled = false
         binding.button.setOnClickListener {
@@ -37,8 +36,6 @@ class Aftersignup : AppCompatActivity() {
 
         var name = binding.Name.text
         var Username = binding.UserName.text
-        var PhNo = binding.PhNo.text
-        var Otp = binding.Otp.text
         var Age = binding.Age.text
         val personNames = arrayOf("Choose Education","Pre-Primary", "Primary", "Vocational Courses", "Mentorship")
         val spinner = binding.spinner
@@ -55,7 +52,7 @@ class Aftersignup : AppCompatActivity() {
                 id: Long
             ) {
                 var selecteditem = parent.getItemAtPosition(position)
-                if (name.isNotBlank()&&Username.isNotBlank()&&PhNo.isNotBlank()&&Otp.isNotBlank()&&Age.isNotBlank()){
+                if (name.isNotBlank()&&Username.isNotBlank()&&Age.isNotBlank()){
                     binding.button.isEnabled = parent.getItemAtPosition(0) != selecteditem
                 }
                 else{
@@ -72,29 +69,27 @@ class Aftersignup : AppCompatActivity() {
     }
     fun checkdetails()
     {
-        var name = binding.Name.text
-        var Username = binding.UserName.text
-        var PhNo = binding.PhNo.text
-        var Otp = binding.Otp.text
-        var Age = binding.Age.text
-            if (PhNo.toString().length == 10)
-            {
-                if (Integer.parseInt(Age.toString()) <= 100){
-                    if (Otp.toString().length==6){
-                        val intent = Intent(this@Aftersignup,MainActivity::class.java)
-                        startActivity(intent)
+        var name = binding.Name.text.toString()
+        var Username = binding.UserName.text.toString()
+        var Age = binding.Age.text.toString()
 
-                    }
-                    else{
-                        Toast.makeText(this@Aftersignup,"Enter Correct Otp",Toast.LENGTH_SHORT).show()
-                    }
+
+
+                if (Integer.parseInt(Age) <= 100)
+                {
+                        database = FirebaseDatabase.getInstance().getReference("Users")
+                        val User = DataClassProfile(Username,name,Age)
+                        database.child(Username).setValue(User).addOnSuccessListener {
+                            val intent = Intent(this@Aftersignup,MainActivity::class.java)
+                            startActivity(intent)
+                        }.addOnFailureListener {
+                            Toast.makeText(this@Aftersignup,"ERROR",Toast.LENGTH_SHORT)
+                        }
                 }
                 else{
                     Toast.makeText(this@Aftersignup,"Enter Correct Age",Toast.LENGTH_SHORT).show()
                 }
-            }
-            else{
-                Toast.makeText(this@Aftersignup,"Enter Correct Number",Toast.LENGTH_SHORT).show()
-            }
+
+
     }
 }
