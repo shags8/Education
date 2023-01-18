@@ -18,8 +18,8 @@ class Aftersignup : AppCompatActivity() {
 
     private lateinit var binding : ActivityAftersignupBinding
     private lateinit var database : DatabaseReference
-
-
+    var personNames = arrayOf("Choose Education","Pre-Primary", "Primary", "Vocational Courses", "Mentorship")
+    var Position : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAftersignupBinding.inflate(layoutInflater)
@@ -37,7 +37,6 @@ class Aftersignup : AppCompatActivity() {
         var name = binding.Name.text
         var Username = binding.UserName.text
         var Age = binding.Age.text
-        val personNames = arrayOf("Choose Education","Pre-Primary", "Primary", "Vocational Courses", "Mentorship")
         val spinner = binding.spinner
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, personNames)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -51,6 +50,7 @@ class Aftersignup : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
+                Position = parent.getItemAtPosition(position).toString()
                 var selecteditem = parent.getItemAtPosition(position)
                 if (name.isNotBlank()&&Username.isNotBlank()&&Age.isNotBlank()){
                     binding.button.isEnabled = parent.getItemAtPosition(0) != selecteditem
@@ -78,7 +78,7 @@ class Aftersignup : AppCompatActivity() {
                 if (Integer.parseInt(Age) <= 100)
                 {
                         database = FirebaseDatabase.getInstance().getReference("Users")
-                        val User = DataClassProfile(Username,name,Age)
+                        val User = DataClassProfile(Username,name,Age.toString(),Position)
                         database.child(Username).setValue(User).addOnSuccessListener {
                             val intent = Intent(this@Aftersignup,MainActivity::class.java)
                             startActivity(intent)
