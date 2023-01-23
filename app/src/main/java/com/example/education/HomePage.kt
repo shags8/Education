@@ -23,6 +23,7 @@ class HomePage : AppCompatActivity() {
         binding.Homepage.addDrawerListener(toggle)
         toggle.syncState()
 
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.side.setNavigationItemSelectedListener {

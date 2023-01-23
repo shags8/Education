@@ -27,8 +27,8 @@ class Aftersignup : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setupSpinner()
-        binding.button.isEnabled = false
-        binding.button.setOnClickListener {
+        binding.signup.isEnabled = false
+        binding.signup.setOnClickListener {
             checkdetails()
         }
     }
@@ -54,7 +54,7 @@ class Aftersignup : AppCompatActivity() {
                 Position = parent.getItemAtPosition(position).toString()
                 var selecteditem = parent.getItemAtPosition(position)
                 if (name.isNotBlank()&&Username.isNotBlank()&&Age.isNotBlank()){
-                    binding.button.isEnabled = parent.getItemAtPosition(0) != selecteditem
+                    binding.signup.isEnabled = parent.getItemAtPosition(0) != selecteditem
                 }
                 else{
                     Toast.makeText(this@Aftersignup,"Fill All Out",Toast.LENGTH_LONG).show()
@@ -68,7 +68,6 @@ class Aftersignup : AppCompatActivity() {
         }
 
     }
-    @SuppressLint("SuspiciousIndentation")
     fun checkdetails()
     {
         var name = binding.Name.text.toString()
@@ -80,7 +79,7 @@ class Aftersignup : AppCompatActivity() {
                 if (Integer.parseInt(Age) <= 100)
                 {
                         database = FirebaseDatabase.getInstance().getReference("Users")
-                        val User = DataClassProfile(Username,name,Age.toString(),Position)
+                        val User = DataClassProfile(Username,name, Age,Position)
                         database.child(Username).setValue(User).addOnSuccessListener {
                             val intent = Intent(this@Aftersignup,HomePage::class.java)
                             startActivity(intent)
