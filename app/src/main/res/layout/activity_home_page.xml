@@ -7,40 +7,15 @@
     android:id="@+id/Homepage"
     tools:context=".HomePage">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/profile"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FF000000"
-                android:layout_gravity="end"/>
-
-        </androidx.appcompat.widget.Toolbar>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
     
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/side"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/categories"/>
 
 
 
