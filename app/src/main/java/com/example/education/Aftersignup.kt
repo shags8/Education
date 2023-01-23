@@ -82,8 +82,9 @@ class Aftersignup : AppCompatActivity() {
                         database = FirebaseDatabase.getInstance().getReference("Users")
                         val User = DataClassProfile(Username,name,Age.toString(),Position)
                         database.child(Username).setValue(User).addOnSuccessListener {
-                            val intent = Intent(this@Aftersignup,MainActivity::class.java)
+                            val intent = Intent(this@Aftersignup,HomePage::class.java)
                             startActivity(intent)
+                            finish()
                         }.addOnFailureListener {
                             Toast.makeText(this@Aftersignup,"ERROR",Toast.LENGTH_SHORT)
                         }

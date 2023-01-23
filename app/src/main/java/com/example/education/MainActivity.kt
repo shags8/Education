@@ -45,10 +45,12 @@ class MainActivity : AppCompatActivity() {
         binding.email.setOnClickListener {
             val intent = Intent(this,Email::class.java)
             startActivity(intent)
+            finish()
         }
         binding.phone.setOnClickListener {
             val intent = Intent(this,Phone_Number::class.java)
             startActivity(intent)
+            finish()
         }
 
 
