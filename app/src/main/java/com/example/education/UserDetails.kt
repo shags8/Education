@@ -29,22 +29,31 @@ class UserDetails : AppCompatActivity() {
         setupSpinner()
         binding.button.isEnabled = false
        binding.button.setOnClickListener {
-            var passcode = binding.passcode.text.toString()
-            var Username = binding.UserName.text.toString()
-            var repasscode = binding.repasscode.text.toString()
-            var name = intent.getStringExtra("name")
-            var email = intent.getStringExtra("email")
-            var age = intent.getStringExtra("Age")
-            var phoneNumber = intent.getStringExtra("phone")
-            database = FirebaseDatabase.getInstance().getReference("Users")
-           val User = DataClassProfile(name, email, age, phoneNumber, Username , passcode , Position )
-            database.child(Username).setValue(User).addOnSuccessListener {
-                val intent = Intent(this@UserDetails,HomePage::class.java)
-                startActivity(intent)
-                finish()
-            }.addOnFailureListener {
-                Toast.makeText(this@UserDetails,"ERROR",Toast.LENGTH_SHORT)
-            }
+
+           var passcode = binding.passcode.text.toString()
+           var Username = binding.UserName.text.toString()
+           var repasscode = binding.repasscode.text.toString()
+           var name = intent.getStringExtra("name")
+           var email = intent.getStringExtra("email")
+           var age = intent.getStringExtra("Age")
+           var phoneNumber = intent.getStringExtra("phone")
+
+
+           if (passcode == repasscode){
+               database = FirebaseDatabase.getInstance().getReference("Users")
+               val User = DataClassProfile(name, email, age, phoneNumber, Username , passcode , Position )
+               database.child(Username).setValue(User).addOnSuccessListener {
+                   val intent = Intent(this@UserDetails,HomePage::class.java)
+                   startActivity(intent)
+                   finish()
+               }.addOnFailureListener {
+                   Toast.makeText(this@UserDetails,"ERROR",Toast.LENGTH_SHORT)
+               }
+
+           }
+           else{
+               Toast.makeText(this@UserDetails,"Password doesn't match",Toast.LENGTH_SHORT)
+           }
         }
 
     }
