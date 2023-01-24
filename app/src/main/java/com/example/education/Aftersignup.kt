@@ -68,6 +68,7 @@ class Aftersignup : AppCompatActivity() {
         }
 
     }
+    @SuppressLint("SuspiciousIndentation")
     fun checkdetails()
     {
         var name = binding.Name.text.toString()

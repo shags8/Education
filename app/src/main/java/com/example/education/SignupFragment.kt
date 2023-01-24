@@ -39,15 +39,21 @@ class SignupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //binding.signup.isEnabled = false
-        //checkdetails()
+            //binding.signup.isEnabled = false
+           // checkdetails()
         binding.signup.setOnClickListener {
+            var name = binding.name.text.toString()
+            var email = binding.email.toString()
             var Age = binding.age.text.toString()
-            var email = binding.email.text.toString()
-            if (Patterns.EMAIL_ADDRESS.matcher(email).matches()&&email.isNotBlank()){
+            var phone = binding.phonenumber.text.toString()
+            if (Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 if (Integer.parseInt(Age) <= 100)
                 {
                     val intent = Intent(activity,UserDetails::class.java)
+                    intent.putExtra("name" ,name )
+                    intent.putExtra("email" ,email )
+                    intent.putExtra("Age" ,Age )
+                    intent.putExtra("phone" ,phone )
                     startActivity(intent)
                     activity?.finish()
                 }
@@ -66,7 +72,7 @@ class SignupFragment : Fragment() {
     fun checkdetails()
     {
         var name = binding.name.text.toString()
-        var email = binding.email.text.toString()
+        var email = binding.email.toString()
         var Age = binding.age.text.toString()
         var phone = binding.phonenumber.text.toString()
 
