@@ -17,12 +17,11 @@ class Login_Signup : AppCompatActivity() {
 
         val viewPager: ViewPager2 = findViewById(R.id.frame)
         val tabLayout: TabLayout = findViewById(R.id.tabs)
-        viewPager.adapter = tabAdpater(this@Login_Signup)
-        TabLayoutMediator(tabLayout,viewPager) {tab: TabLayout.Tab, position: Int ->
+        viewPager.adapter = tabAdpater(this)
+        TabLayoutMediator(tabLayout, viewPager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
          val tabNames = listOf("Log in","Sign up")
             tab.text = tabNames[position]
-
-        }.attach()
+        }).attach()
 
     }
     override fun onBackPressed() {
