@@ -52,4 +52,5 @@ dependencies {
 
     implementation 'com.hbb20:ccp:2.6.1'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation("androidx.fragment:fragment-ktx:1.5.5")
 }
