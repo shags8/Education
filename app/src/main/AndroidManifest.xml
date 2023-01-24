@@ -17,6 +17,20 @@
         android:theme="@style/Theme.Education"
         tools:targetApi="31">
         <activity
+            android:name=".Choice"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CHoice"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".UserDetails"
             android:exported="false">
             <meta-data
