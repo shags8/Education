@@ -47,12 +47,11 @@ class UserDetails : AppCompatActivity() {
                    startActivity(intent)
                    finish()
                }.addOnFailureListener {
-                   Toast.makeText(this@UserDetails,"ERROR",Toast.LENGTH_SHORT)
+                   Toast.makeText(this@UserDetails,"ERROR",Toast.LENGTH_SHORT).show()
                }
-
            }
            else{
-               Toast.makeText(this@UserDetails,"Password doesn't match",Toast.LENGTH_SHORT)
+               Toast.makeText(this@UserDetails,"Password doesn't match",Toast.LENGTH_SHORT).show()
            }
         }
 
