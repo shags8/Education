@@ -43,7 +43,7 @@ class SignupFragment : Fragment() {
            // checkdetails()
         binding.signup.setOnClickListener {
             var name = binding.name.text.toString()
-            var email = binding.email.toString()
+            var email = binding.email.text.toString()
             var Age = binding.age.text.toString()
             var phone = binding.phonenumber.text.toString()
             if (Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -72,7 +72,7 @@ class SignupFragment : Fragment() {
     fun checkdetails()
     {
         var name = binding.name.text.toString()
-        var email = binding.email.toString()
+        var email = binding.email.text.toString()
         var Age = binding.age.text.toString()
         var phone = binding.phonenumber.text.toString()
 

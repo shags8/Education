@@ -1,5 +1,6 @@
 package com.example.education
 
+import android.content.Intent
 import android.icu.text.Transliterator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.Toast
 import com.example.education.databinding.ActivityAftersignupBinding
 import com.example.education.databinding.ActivityUserDetailsBinding
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class UserDetails : AppCompatActivity() {
 
@@ -26,6 +28,24 @@ class UserDetails : AppCompatActivity() {
         setContentView(view)
         setupSpinner()
         binding.button.isEnabled = false
+       binding.button.setOnClickListener {
+            var passcode = binding.passcode.text.toString()
+            var Username = binding.UserName.text.toString()
+            var repasscode = binding.repasscode.text.toString()
+            var name = intent.getStringExtra("name")
+            var email = intent.getStringExtra("email")
+            var age = intent.getStringExtra("Age")
+            var phoneNumber = intent.getStringExtra("phone")
+            database = FirebaseDatabase.getInstance().getReference("Users")
+           val User = DataClassProfile(name, email, age, phoneNumber, Username , passcode , Position )
+            database.child(Username).setValue(User).addOnSuccessListener {
+                val intent = Intent(this@UserDetails,HomePage::class.java)
+                startActivity(intent)
+                finish()
+            }.addOnFailureListener {
+                Toast.makeText(this@UserDetails,"ERROR",Toast.LENGTH_SHORT)
+            }
+        }
 
     }
 
