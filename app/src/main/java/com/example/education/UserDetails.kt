@@ -10,8 +10,10 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.education.databinding.ActivityAftersignupBinding
 import com.example.education.databinding.ActivityUserDetailsBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 class UserDetails : AppCompatActivity() {
 
@@ -40,9 +42,13 @@ class UserDetails : AppCompatActivity() {
 
 
            if (passcode == repasscode){
+               val userid = FirebaseAuth.getInstance().currentUser?.uid.toString()
                database = FirebaseDatabase.getInstance().getReference("Users")
+               if (email != null) {
+                   FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,passcode)
+               }
                val User = DataClassProfile(name, email, age, phoneNumber, Username , passcode , Position )
-               database.child(Username).setValue(User).addOnSuccessListener {
+               database.child(userid).setValue(User).addOnSuccessListener {
                    val intent = Intent(this@UserDetails,HomePage::class.java)
                    startActivity(intent)
                    finish()
