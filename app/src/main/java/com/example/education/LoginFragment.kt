@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.login.setOnClickListener {
+   /*     binding.login.setOnClickListener {
             var Email = binding.email.text.toString()
             var passcode = binding.passcode.text.toString()
         if (Email.isNotBlank()&&passcode.isNotBlank()){
@@ -53,7 +53,7 @@ class LoginFragment : Fragment() {
                 }
             }
         }
-        }
+        }*/
 
     }
 

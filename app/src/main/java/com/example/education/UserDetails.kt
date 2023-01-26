@@ -42,11 +42,9 @@ class UserDetails : AppCompatActivity() {
 
 
            if (passcode == repasscode){
+               FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.toString(),passcode)
                val userid = FirebaseAuth.getInstance().currentUser?.uid.toString()
                database = FirebaseDatabase.getInstance().getReference("Users")
-               if (email != null) {
-                   FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,passcode)
-               }
                val User = DataClassProfile(name, email, age, phoneNumber, Username , passcode , Position )
                database.child(userid).setValue(User).addOnSuccessListener {
                    val intent = Intent(this@UserDetails,HomePage::class.java)

@@ -143,7 +143,6 @@ class SignupFragment : Fragment() {
         val credential = GoogleAuthProvider.getCredential(account.idToken , null)
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
-                FirebaseAuth.getInstance().currentUser
                 val intent : Intent = Intent(activity , UserDetails::class.java)
                 startActivity(intent)
             }else{
