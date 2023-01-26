@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 
 class Login_Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,12 +19,16 @@ class Login_Signup : AppCompatActivity() {
         val viewPager: ViewPager2 = findViewById(R.id.frame)
         val tabLayout: TabLayout = findViewById(R.id.tabs)
         viewPager.adapter = tabAdpater(this)
-        TabLayoutMediator(tabLayout, viewPager, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-         val tabNames = listOf("Log in","Sign up")
-            tab.text = tabNames[position]
-        }).attach()
+        TabLayoutMediator(
+            tabLayout,
+            viewPager,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                val tabNames = listOf("Log in", "Sign up")
+                tab.text = tabNames[position]
+            }).attach()
 
     }
+
     override fun onBackPressed() {
         AlertDialog.Builder(this).setTitle("Exit")
             .setMessage("Are you sure?")
@@ -34,5 +39,14 @@ class Login_Signup : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }).setNegativeButton("no", null).show()
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            startActivity(Intent(this, HomePage::class.java))
+            finish()
+        }
     }
 }
