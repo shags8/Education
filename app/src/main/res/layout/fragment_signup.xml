@@ -61,6 +61,7 @@
         android:background="@drawable/input_button"
         android:layout_marginStart="20dp"
         android:hint="Phone Number"
+        android:inputType="number"
         android:textSize="20sp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
