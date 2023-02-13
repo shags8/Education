@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserDetails">
+
+
+    <EditText
+        android:id="@+id/UserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/input_button"
+        android:hint="Create UserName"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/input_button"
+        android:hint="Enter FullName"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:layout_below="@+id/UserName"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/Age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/input_button"
+        android:hint="Enter Age"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:layout_below="@+id/Name"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        />
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/input_button"
+        android:hint="Enter Email"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:layout_below="@+id/Age"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/phonenumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/input_button"
+        android:hint="Enter Number"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:layout_below="@+id/email"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/passcode"
+        android:background="@drawable/input_button"
+        android:layout_marginStart="20dp"
+        android:hint="Create Password"
+        android:layout_below="@+id/phonenumber"
+        android:textSize="20sp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passcode"
+        android:id="@+id/repasscode"
+        android:background="@drawable/input_button"
+        android:layout_marginStart="20dp"
+        android:hint="Reenter password"
+        android:textSize="20sp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp"
+        />
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/repasscode"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:spinnerMode="dropdown" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Button" />
+
+</RelativeLayout>
