@@ -19,6 +19,7 @@ class HomePage : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         val toolbar = binding.toolbar
+        val collapasable = binding.collapsing
         setSupportActionBar(toolbar)
 
         toggle = ActionBarDrawerToggle(this , binding.Homepage , R.string.open , R.string.close)
