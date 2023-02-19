@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="170dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="20dp"
+    android:backgroundTint="#FFA800"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="15dp"
+    app:cardElevation="25dp"
+    android:padding="8dp"
+    app:cardCornerRadius="20dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="170dp"
+        android:orientation="vertical">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/list_item"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:background="#FFD991"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:adjustViewBounds="true"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="SHAGUN"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:layout_marginTop="3dp"
+                android:maxLines="1"
+                android:layout_marginStart="10dp"
+                android:text="NOIDA"
+                android:textColor="@color/white"
+                android:textSize="10dp"
+                />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
