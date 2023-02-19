@@ -24,7 +24,7 @@
         android:layout_marginStart="10dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/Coursename"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -35,7 +35,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/authorname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
