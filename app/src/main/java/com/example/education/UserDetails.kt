@@ -46,7 +46,7 @@ class UserDetails : AppCompatActivity() {
                val userid = FirebaseAuth.getInstance().currentUser?.uid.toString()
                database = FirebaseDatabase.getInstance().getReference("Users")
                val User = DataClassProfile(name, email, age, phoneNumber, Username , passcode , Position )
-               database.child(userid).setValue(User).addOnSuccessListener {
+               database.child(Username).setValue(User).addOnSuccessListener {
                    val intent = Intent(this@UserDetails,HomePage::class.java)
                    startActivity(intent)
                    finish()

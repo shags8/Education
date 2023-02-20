@@ -11,19 +11,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.education.databinding.ActivityHomePageBinding
 import com.google.android.gms.common.util.WorkSourceUtil.add
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class HomePage : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomePageBinding
     lateinit var toggle : ActionBarDrawerToggle
     lateinit var courseview : RecyclerView
-    lateinit var adapter : ADAPTER
+    lateinit var educatorview : RecyclerView
     private lateinit var database : DatabaseReference
     private lateinit var  courselist : ArrayList<dataclassCourse>
-    lateinit var courses : Array<String>
-    lateinit var authors : Array<String>
+    private lateinit var  educatorlist : ArrayList<dataclasseducators>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +29,6 @@ class HomePage : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         val toolbar = binding.toolbar
-        val collapasable = binding.collapsing
         setSupportActionBar(toolbar)
 
         toggle = ActionBarDrawerToggle(this , binding.Homepage , R.string.open , R.string.close)
@@ -49,19 +46,15 @@ class HomePage : AppCompatActivity() {
 
         }
 
-        courses = arrayOf("ssdda","dsdsa","sdadsad","sdaddassda")
-        authors = arrayOf("safa","fasfs","sfasffsa","safsasafa")
-        courselist = arrayListOf<dataclassCourse>()
-        for(i in courses.indices){
-            val assa = dataclassCourse(courses[i],authors[i])
-            courselist.add(assa)
-        }
-
-
 
         courseview = binding.recyclecourses
         courseview.layoutManager = LinearLayoutManager(this)
-        courseview.adapter = ADAPTER(courselist)
+        courselist = arrayListOf()
+        educatorview = binding.reycleeducators
+        educatorview.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        educatorlist = arrayListOf()
+        readData()
+
 
 
 
@@ -70,10 +63,38 @@ class HomePage : AppCompatActivity() {
 
     private fun readData() {
         database = FirebaseDatabase.getInstance().getReference("Users")
-        database.get().addOnSuccessListener {
-            val Name = it.child("course").value
-            val Passcode = it.child("passcode").value
-        }
+        database.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if (snapshot.exists()){
+                    for (userSnapshot in snapshot.children){
+                        val user = userSnapshot.getValue(dataclassCourse::class.java)
+                        if (user != null) {
+                            courselist.add(user)
+                        }
+
+
+                    }
+                    courseview.adapter = ADAPTER(courselist)
+                }
+                if (snapshot.exists()){
+                    for (userSnapshot in snapshot.children){
+                        val user = userSnapshot.getValue(dataclasseducators::class.java)
+                        if (user != null) {
+                            educatorlist.add(user)
+                        }
+
+
+                    }
+                    educatorview.adapter = ADAPTER_educcators(educatorlist)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
 
     }
 

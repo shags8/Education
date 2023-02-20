@@ -18,8 +18,8 @@ class ADAPTER(private val courselist: ArrayList<dataclassCourse>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val currentitem = courselist[position]
-        holder.coursename.text = currentitem.coursename
-        holder.author.text = currentitem.authorname
+        holder.coursename.text = currentitem.course
+        holder.author.text = currentitem.username
     }
 
     override fun getItemCount(): Int {
