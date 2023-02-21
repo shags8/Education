@@ -3,5 +3,12 @@
 
     <item
        android:id="@+id/home"
-        android:title="HOME"/>
+        android:title="Home page" />
+    <item
+        android:id="@+id/profile"
+        android:title="My Profile"/>
+    <item
+        android:id="@+id/mycourse"
+        android:title="My Courses"/>
+
 </menu>

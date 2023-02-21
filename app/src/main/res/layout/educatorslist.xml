@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="170dp"
+    android:layout_height="180dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="20dp"
     android:backgroundTint="#FFA800"
@@ -13,13 +13,13 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="170dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/list_item"
             android:layout_width="150dp"
             android:layout_height="80dp"
-            android:background="#FFD991"
+            android:background="@drawable/educatoryellow"
             android:scaleType="centerCrop"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
@@ -34,7 +34,7 @@
                 android:maxLines="1"
                 android:text="SHAGUN"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />

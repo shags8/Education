@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import com.example.education.databinding.ActivityAftersignupBinding
 import com.example.education.databinding.ActivityLoginSignupBinding
 import com.example.education.databinding.FragmentSignupBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -95,25 +94,6 @@ class SignupFragment : Fragment() {
 
     }
 
-    fun checkdetails()
-    {
-        var name = binding.name.text.toString()
-        var email = binding.email.text.toString()
-        var Age = binding.age.text.toString()
-        var phone = binding.phonenumber.text.toString()
-
-        if (name.isNotBlank()&&email.isNotBlank()&&Age.isNotBlank()&&phone.isNotBlank()){
-            binding.signup.isEnabled = true
-        }
-        else{
-            Toast.makeText(activity,"Fill All Out",Toast.LENGTH_LONG).show()
-        }
-
-
-    }
-
-
-
     private fun signInGoogle(){
         val signInIntent = googlesignin.signInIntent
         launcher.launch(signInIntent)
@@ -144,13 +124,32 @@ class SignupFragment : Fragment() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
 
-                val intent : Intent = Intent(activity , UserDetails::class.java)
+                val intent : Intent = Intent(activity , Userdetailsgoogle::class.java)
                 startActivity(intent)
+                activity?.finish()
             }else{
                 Toast.makeText(activity, it.exception.toString() , Toast.LENGTH_SHORT).show()
 
             }
         }
+    }
+
+
+    fun checkdetails()
+    {
+        var name = binding.name.text.toString()
+        var email = binding.email.text.toString()
+        var Age = binding.age.text.toString()
+        var phone = binding.phonenumber.text.toString()
+
+        if (name.isNotBlank()&&email.isNotBlank()&&Age.isNotBlank()&&phone.isNotBlank()){
+            binding.signup.isEnabled = true
+        }
+        else{
+            Toast.makeText(activity,"Fill All Out",Toast.LENGTH_LONG).show()
+        }
+
+
     }
 
 

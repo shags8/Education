@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import com.example.education.databinding.ActivityAftersignupBinding
 import com.example.education.databinding.ActivityUserDetailsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -45,7 +44,7 @@ class UserDetails : AppCompatActivity() {
                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.toString(),passcode)
                val userid = FirebaseAuth.getInstance().currentUser?.uid.toString()
                database = FirebaseDatabase.getInstance().getReference("Users")
-               val User = DataClassProfile(name, email, age, phoneNumber, Username , passcode , Position )
+               val User = DataClassProfile(name, email, age, phoneNumber, Username , passcode , Position , userid)
                database.child(Username).setValue(User).addOnSuccessListener {
                    val intent = Intent(this@UserDetails,HomePage::class.java)
                    startActivity(intent)
