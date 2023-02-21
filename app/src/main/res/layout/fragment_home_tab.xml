@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingClass"
+    tools:context=".HomePage"
+    android:id="@+id/Homepage">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsing"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@drawable/collapasable_toolbar"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Hi, Emily!"
+                                android:textColor="@color/white"
+                                android:textSize="35sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:lines="1"
+                                android:text="see courses and centers here"
+                                android:textColor="@color/white"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:text="here"
+                                android:textColor="@color/white"
+                                android:textSize="20sp" />
+
+                        </LinearLayout>
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/profile" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popular Courses"
+            android:layout_marginStart="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/courses"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/recyclecourses"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/courselist"
+                />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popular Educators"
+            android:textSize="15sp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/educators"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/reycleeducators"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:listitem="@layout/educatorslist"
+                />
+
+        </FrameLayout>
+
+
+
+</LinearLayout>

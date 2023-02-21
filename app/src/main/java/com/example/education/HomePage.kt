@@ -1,12 +1,14 @@
 package com.example.education
 
 import android.graphics.Insets.add
+import android.icu.text.CaseMap.Title
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.OneShotPreDrawListener.add
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.education.databinding.ActivityHomePageBinding
@@ -36,67 +38,32 @@ class HomePage : AppCompatActivity() {
         toggle.syncState()
 
 
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.side.setNavigationItemSelectedListener {
+            it.isChecked = true
             when(it.itemId){
-                R.id.home -> Toast.makeText(this,"ok",Toast.LENGTH_SHORT).show()
+                R.id.home -> replacefragment(HomeTab(),it.title.toString())
             }
             true
 
         }
 
 
-        courseview = binding.recyclecourses
-        courseview.layoutManager = LinearLayoutManager(this)
-        courselist = arrayListOf()
-        educatorview = binding.reycleeducators
-        educatorview.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        educatorlist = arrayListOf()
-        readData()
-
-
-
-
 
     }
 
-    private fun readData() {
-        database = FirebaseDatabase.getInstance().getReference("Users")
-        database.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                if (snapshot.exists()){
-                    for (userSnapshot in snapshot.children){
-                        val user = userSnapshot.getValue(dataclassCourse::class.java)
-                        if (user != null) {
-                            courselist.add(user)
-                        }
-
-
-                    }
-                    courseview.adapter = ADAPTER(courselist)
-                }
-                if (snapshot.exists()){
-                    for (userSnapshot in snapshot.children){
-                        val user = userSnapshot.getValue(dataclasseducators::class.java)
-                        if (user != null) {
-                            educatorlist.add(user)
-                        }
-
-
-                    }
-                    educatorview.adapter = ADAPTER_educcators(educatorlist)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
+    private fun replacefragment(fragment : Fragment , title: String) {
+        val fragmentmanager = supportFragmentManager
+        val fragmenttransaction = fragmentmanager.beginTransaction()
+        fragmenttransaction.replace(R.id.frame,fragment)
+        fragmenttransaction.commit()
+        binding.Homepage.closeDrawers()
+        setTitle(title)
 
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)){
