@@ -45,6 +45,7 @@ class HomePage : AppCompatActivity() {
             it.isChecked = true
             when(it.itemId){
                 R.id.home -> replacefragment(HomeTab(),it.title.toString())
+                R.id.profile -> replacefragment(ProfileTab(), it.title.toString())
             }
             true
 
